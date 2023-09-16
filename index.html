@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rekisteröitymislomake</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <form id="rekisteroitymislomake">
+        <h1>Rekisteröitymislomake</h1>
+        <p>
+            Siirry kentästä toiseen tab-näppäimellä.
+        </p>
+        <label for="käyttajä-id">Käyttäjä ID: </label>
+        <input type="text" placeholder="vähintään 6 merkkiä" name="käyttajä-id" id="käyttajä-id" minlength="6" autocomplete="off" required><br>
+
+        <label for="salasana">Salasana: </label>
+        <input type="password" name="salasana" id="salasana" required><br>
+
+        <label for="nimi">Nimi: </label>
+        <input type="text" name="nimi" id="nimi" autocomplete="off" required><br>
+
+        <label for="osoite">Osoite: </label>
+        <input type="text" name="osoite" id="osoite" autocomplete="off" required><br>
+
+        <label for="maa">Maa: </label>
+        <select name="maa" id="maa" required>
+            <option disabled selected>(Valitse maa)</option>
+            <option value="suomi">Suomi</option>
+            <option value="finland">Finland</option>
+            <option value="finlandia">Finlandia</option>
+        </select><br>
+
+        <label for="postinumero">Postinumero: </label>
+        <input type="text" placeholder="on oltava 5-numeroisia" name="postinumero" id="postinumero" pattern="[0-9]{5}" autocomplete="off" required><br>
+
+        <label for="email">Sähköposti: </label>
+        <input type="email" name="email" id="email" autocomplete="off" required><br>
+
+        <label for="sukupuoli">Sukupuoli: </label>
+        <input type="radio" name="sukupuoli" id="mies">
+        <label for="mies">Mies</label>
+        <input type="radio" name="sukupuoli" id="nainen">
+        <label for="nainen">Nainen</label><br>
+
+        <label for="kieli">Kieli: </label>
+        <input type="checkbox" name="kieli" id="suomi">
+        <label for="suomi">Suomi</label>
+        <input type="checkbox" name="kieli" id="muu">
+        <label for="muu">Muu kuin suomi</label><br>
+
+        <label for="lisatietoja">Lisätietoja: </label><br>
+        <textarea id="lisatietoja" name="lisatietoja" rows="8" cols="47"></textarea><br>
+
+        <label for="laheta"></label>
+        <button name="laheta" id="laheta">Lähetä</button>
+
+    </form>
+    
+    <script src="main.js"></script>
+</body>
+</html>
