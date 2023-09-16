@@ -1,9 +1,13 @@
 document.getElementById("laheta").onclick = function () {
     let kayttajaId = document.getElementById("käyttajä-id");
     let postiNumero = document.getElementById("postinumero");
+    let email = document.getElementById("email");
     let sukupuoli = document.querySelector('input[name="sukupuoli"]:checked');
     let kieliSuomi = document.getElementById("suomi");
     let kieliMuu = document.getElementById("muu");
+
+    // Säännöllinen lauseke sähköpostin perusvalidointia varten
+    let emailMalli = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
     switch (true) {
         case (kayttajaId.value.length < 6):
@@ -15,6 +19,11 @@ document.getElementById("laheta").onclick = function () {
             // '/^\d{5}$/' : Tämä säännöllisen lausekkeen malli (Regular Expression) varmistaa, että postinumeron on koostuttava täsmälleen viidestä numerosta eikä mistään muusta.
             // sitten kutsuu 'test'-metodia säännölliselle lausekkeelle ja siirtää postiNumero.value-arvon testattavaksi syöttömerkkijonoksi.
             alert("Postinumeron on oltava 5-numeroinen.");
+            break;
+
+        case !emailMalli.test(email.value):
+            // Tarkista, onko sähköposti kelvollisessa muodossa, jos ei ole, näytölle tulee hälytys.
+            alert("Sähköpostiosoite ei ole kelvollinen.");
             break;
 
         case !sukupuoli:
