@@ -1,5 +1,6 @@
-document.getElementById("laheta").onclick = function () {
-    let kayttajaId = document.getElementById("käyttajä-id");
+document.getElementById("laheta").onclick = function (event) {
+    event.preventDefault(); // Estä lomakkeen oletuslähetys
+    let kayttajaId = document.getElementById("kayttaja-id");
     let postiNumero = document.getElementById("postinumero");
     let email = document.getElementById("email");
     let sukupuoli = document.querySelector('input[name="sukupuoli"]:checked');
