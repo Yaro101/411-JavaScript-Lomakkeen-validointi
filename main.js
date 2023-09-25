@@ -1,7 +1,37 @@
+function tarkistaSyöttöTiedot() {
+    // Tarkista, onko 'salasana'-syötteen, 'nimi'-syötteen, 'osoite'-syötteen tai maa arvo tyhjä
+    if (salasana.value.trim() === "") {
+        alert("Anna salasana.");
+        return false; // Estä lomakkeen lähettäminen
+    }
+
+    if (nimi.value.trim() === "") {
+        alert("Anna nimi.");
+        return false; // Estä lomakkeen lähettäminen
+    }
+
+    if (osoite.value.trim() === "") {
+        alert("Anna osoite.");
+        return false; // Estä lomakkeen lähettäminen
+    }
+
+    if (maa.value === "(Valitse maa)") {
+        alert("Valitse maa.");
+        return false; // Estä lomakkeen lähettäminen
+    }
+
+    // Kaikilla syötteillä on arvot, jatka muita toimintoja.
+    return true;
+
+}
+
 document.getElementById("laheta").onclick = function (event) {
     event.preventDefault(); // Estä lomakkeen oletuslähetys
-    
+
     let kayttajaId = document.getElementById("kayttaja-id");
+    let salasana = document.getElementById("salasana");
+    let nimi = document.getElementById("nimi");
+    let osoite = document.getElementById("osoite");
     let postiNumero = document.getElementById("postinumero");
     let email = document.getElementById("email");
     let sukupuoli = document.querySelector('input[name="sukupuoli"]:checked');
@@ -15,6 +45,10 @@ document.getElementById("laheta").onclick = function (event) {
         case (kayttajaId.value.length < 6):
             // käyttämällä Javascriptin length-ominaisuutta tarkistaa, että käyttäjätunnuksen pituus on vähintään 6 merkkiä. 
             alert("Käyttäjä ID:n on oltava vähintään 6 merkkiä pitkä.");
+            break;
+
+        case (!tarkistaSyöttöTiedot()):
+
             break;
 
         case (!/^\d{5}$/.test(postiNumero.value)):
@@ -40,7 +74,7 @@ document.getElementById("laheta").onclick = function (event) {
             alert("Sinun täytyy valita kieli!");
             break;
 
-        
+
 
         default:
             // Lähetä lomake, jos kaikki validoinnit hyväksytään.
